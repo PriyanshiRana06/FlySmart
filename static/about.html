@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FlySmart</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        .about-page {
+            background: #f5f8fe;
+            padding: 65px 7%;
+        }
+
+        .about-hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .about-hero .eyebrow {
+            color: #1769e0;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .about-hero h1 {
+            color: #142b4e;
+            font-size: 42px;
+            margin: 15px 0;
+        }
+
+        .about-hero p {
+            color: #718096;
+            line-height: 1.8;
+        }
+
+        .about-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .about-card {
+            background: white;
+            padding: 35px;
+            border: 1px solid #e3ebf7;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(22, 53, 95, 0.05);
+        }
+
+        .about-card h2 {
+            color: #142b4e;
+            margin-top: 0;
+        }
+
+        .about-card p,
+        .about-card li {
+            color: #718096;
+            line-height: 1.9;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .about-highlight {
+            color: #1769e0;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .about-note {
+            background: #eaf2ff;
+            padding: 22px;
+            border-radius: 12px;
+            color: #53657d;
+            line-height: 1.8;
+        }
+
+        @media(max-width: 700px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero h1 {
+                font-size: 32px;
+            }
+
+            .about-page {
+                padding: 40px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo">Fly<span>Smart</span></a>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/static/explore.html">Explore Flights</a>
+        <a href="/static/offers.html">Flight Offers</a>
+        <a href="/static/about.html" class="active">About FlySmart</a>
+    </nav>
+
+    <a href="/static/explore.html" class="nav-button">Explore Flights</a>
+</header>
+
+<main class="about-page">
+
+    <section class="about-hero">
+        <p class="eyebrow">GET TO KNOW US</p>
+        <h1>About FlySmart</h1>
+        <p>
+            Smart Flight Search. Smarter Price Insights.
+            FlySmart combines domestic route fare information
+            with machine learning to help users understand flight prices.
+        </p>
+    </section>
+
+    <div class="about-container">
+
+        <section class="about-card">
+            <h2>Our Project</h2>
+            <p>
+                FlySmart is an academic flight price insight and
+                classification system. It allows users to explore
+                domestic routes across India and view historical fare
+                information such as median fares, recent lows and
+                fare ranges.
+            </p>
+            <p>
+                The project also uses a machine-learning model to
+                classify flight prices into Low, Medium and High
+                categories for supported flight details.
+            </p>
+        </section>
+
+        <section class="about-grid">
+
+            <article class="about-card">
+                <div class="about-highlight">✈</div>
+                <h2>Route Fare Insights</h2>
+                <p>
+                    Explore historical fare observations for
+                    supported domestic routes and understand
+                    typical fare patterns.
+                </p>
+            </article>
+
+            <article class="about-card">
+                <div class="about-highlight">🤖</div>
+                <h2>Machine Learning</h2>
+                <p>
+                    A trained classification model analyses
+                    supported flight features and predicts
+                    a Low, Medium or High price category.
+                </p>
+            </article>
+
+            <article class="about-card">
+                <div class="about-highlight">📊</div>
+                <h2>Data-Driven Insights</h2>
+                <p>
+                    Historical fare statistics help users
+                    compare route-level fare patterns before
+                    making travel decisions.
+                </p>
+            </article>
+
+            <article class="about-card">
+                <div class="about-highlight">💡</div>
+                <h2>Smart Recommendations</h2>
+                <p>
+                    FlySmart provides simple recommendations
+                    based on the flight details entered by users.
+                </p>
+            </article>
+
+        </section>
+
+        <section class="about-card">
+            <h2>Technology Stack</h2>
+            <ul>
+                <li>Python for application development</li>
+                <li>Pandas and NumPy for data processing</li>
+                <li>Scikit-learn for machine learning</li>
+                <li>MLflow for experiment tracking</li>
+                <li>FastAPI for backend API development</li>
+                <li>HTML, CSS and JavaScript for the frontend</li>
+                <li>Pytest for application testing</li>
+            </ul>
+        </section>
+
+        <div class="about-note">
+            <strong>Project Note:</strong>
+            FlySmart provides historical route-level fare insights,
+            not live flight availability or confirmed ticket prices.
+            Its ML classification is limited to the feature categories
+            supported by its training dataset.
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    <a href="/" class="logo">Fly<span>Smart</span></a>
+    <p>Smart Flight Search. Smarter Price Insights.</p>
+    <p class="copyright">© 2026 FlySmart. Academic Project.</p>
+</footer>
+
+</body>
+</html>

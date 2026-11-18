@@ -1,0 +1,1088 @@
+
+/* ==========================================
+
+   FLYSMART - EXPLORE FLIGHTS PAGE
+
+========================================== */
+
+
+/* Prevent browser default hidden elements from appearing */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* Main page */
+
+main.flight-search-page {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 55px 45px 70px;
+    background: #f5f8fe;
+    color: #172b4d;
+}
+
+
+/* Hero section */
+
+.flight-search-page .flight-hero {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 45px;
+}
+
+.flight-search-page .flight-hero .eyebrow {
+    color: #1769e0;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.flight-search-page .flight-hero h1 {
+    color: #142b4e;
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+.flight-search-page .flight-hero > p:last-child {
+    color: #718096;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* Search card */
+
+.flight-search-page .flight-search-card {
+    display: block;
+    width: 100%;
+    padding: 36px;
+    background: #ffffff;
+    border: 1px solid #e3ebf7;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(22, 53, 95, 0.08);
+}
+
+
+/* Search card heading */
+
+.flight-search-page .search-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.flight-search-page .search-tag {
+    color: #1769e0;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.flight-search-page .search-card-heading h2 {
+    color: #172b4d;
+    font-size: 25px;
+    margin: 10px 0 0;
+}
+
+.flight-search-page .route-count {
+    padding: 12px 18px;
+    border-radius: 30px;
+    background: #edf5ff;
+    color: #1769c2;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* Route fields */
+
+.flight-search-page .route-input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.flight-search-page .route-field {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    min-width: 0;
+}
+
+.flight-search-page .route-field label {
+    color: #53657d;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.flight-search-page .route-field input {
+    width: 100%;
+    height: 58px;
+    padding: 0 17px;
+    border: 1px solid #d9e2ef;
+    border-radius: 10px;
+    background: #fbfdff;
+    color: #172b4d;
+    font-size: 16px;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flight-search-page .route-field input:focus {
+    border-color: #1769e0;
+    box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.10);
+}
+
+
+/* Search button */
+
+.flight-search-page #searchFlightsButton {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    min-height: 54px;
+    margin: 30px auto 0;
+    padding: 15px 24px;
+    border: none;
+    border-radius: 9px;
+    background: #1769e0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.flight-search-page #searchFlightsButton:hover {
+    background: #1054bd;
+    transform: translateY(-2px);
+}
+
+.flight-search-page #searchFlightsButton:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+
+/* Disclaimer and errors */
+
+.flight-search-page .search-disclaimer {
+    max-width: 850px;
+    margin: 23px auto 0;
+    color: #7a8799;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.flight-search-page .search-error {
+    color: #d93030;
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0 0;
+}
+
+
+/* Results card */
+
+.flight-search-page .fare-results {
+    width: 100%;
+    margin-top: 40px;
+    padding: 35px;
+    background: #ffffff;
+    border: 1px solid #e3ebf7;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(22, 53, 95, 0.07);
+}
+
+.flight-search-page .results-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.flight-search-page .results-heading .eyebrow {
+    color: #1769e0;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.flight-search-page .results-heading h2 {
+    color: #172b4d;
+    font-size: 27px;
+    margin: 10px 0;
+}
+
+.flight-search-page .results-heading p:last-child {
+    color: #718096;
+    font-size: 14px;
+}
+
+.flight-search-page .historical-badge {
+    padding: 12px 18px;
+    border-radius: 30px;
+    background: #edf5ff;
+    color: #1769c2;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* Fare cards */
+
+.flight-search-page .fare-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.flight-search-page .fare-card {
+    padding: 24px 20px;
+    background: #f4f8ff;
+    border: 1px solid #e0eafa;
+    border-radius: 13px;
+}
+
+.flight-search-page .fare-card h3 {
+    color: #62738c;
+    font-size: 14px;
+    margin-bottom: 17px;
+}
+
+.flight-search-page .fare-card .fare-amount {
+    color: #1769e0;
+    font-size: 27px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.flight-search-page .fare-card span {
+    color: #7b899d;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* Fare explanation */
+
+.flight-search-page .fare-information {
+    margin-top: 28px;
+    padding: 26px;
+    border-radius: 12px;
+    background: #f7f9fe;
+}
+
+.flight-search-page .fare-information h3 {
+    color: #172b4d;
+    font-size: 19px;
+    margin-bottom: 14px;
+}
+
+.flight-search-page .fare-information p {
+    color: #687991;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.flight-search-page .fare-information a {
+    color: #1769e0;
+    font-weight: 700;
+}
+
+
+/* Feature cards */
+
+.flight-search-page .flight-features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 45px;
+}
+
+.flight-search-page .flight-features > div {
+    padding: 27px;
+    background: #ffffff;
+    border: 1px solid #e3ebf7;
+    border-radius: 14px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.flight-search-page .flight-features > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(22, 53, 95, 0.08);
+}
+
+.flight-search-page .flight-features span {
+    color: #1769e0;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.flight-search-page .flight-features h3 {
+    color: #172b4d;
+    font-size: 19px;
+    margin: 15px 0 10px;
+}
+
+.flight-search-page .flight-features p {
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* Responsive */
+
+@media (max-width: 900px) {
+    main.flight-search-page {
+        padding: 40px 25px;
+    }
+
+    .flight-search-page .fare-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .flight-search-page .flight-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    main.flight-search-page {
+        padding: 30px 15px;
+    }
+
+    .flight-search-page .flight-hero h1 {
+        font-size: 31px;
+    }
+
+    .flight-search-page .flight-search-card,
+    .flight-search-page .fare-results {
+        padding: 21px;
+    }
+
+    .flight-search-page .search-card-heading,
+    .flight-search-page .results-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .flight-search-page .route-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flight-search-page .fare-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =====================================
+   FLYSMART EXPLORE PAGE - FINAL FIX
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+/* Navigation */
+
+.navbar {
+    width: 100%;
+    min-height: 90px;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #ffffff;
+}
+
+.navbar .logo {
+    font-size: 30px;
+    font-weight: 800;
+    color: #142b4e;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.navbar .logo span {
+    color: #1769e0;
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navbar nav a {
+    color: #263b59;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navbar nav a:hover,
+.navbar nav a.active {
+    color: #1769e0;
+}
+
+.navbar .nav-button {
+    padding: 14px 28px;
+    background: #1769e0;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+
+/* Main page */
+
+.flight-search-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 5% 70px;
+    background: #f5f8fe;
+}
+
+
+/* Hero */
+
+.flight-hero {
+    text-align: center;
+    padding: 65px 15px 55px;
+}
+
+.flight-hero .eyebrow,
+.results-heading .eyebrow {
+    color: #1769e0;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.flight-hero h1 {
+    color: #142b4e;
+    font-size: clamp(32px, 4vw, 48px);
+    margin: 18px 0;
+}
+
+.flight-hero > p:last-child {
+    color: #718096;
+    font-size: 17px;
+}
+
+
+/* Search card */
+
+.flight-search-card {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 38px;
+    background: #ffffff;
+    border: 1px solid #e3ebf7;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(22, 53, 95, 0.07);
+}
+
+.search-card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 38px;
+}
+
+.search-tag {
+    color: #1769e0;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.search-card-heading h2 {
+    color: #142b4e;
+    font-size: 28px;
+    margin: 12px 0 0;
+}
+
+.route-count,
+.historical-badge {
+    padding: 13px 20px;
+    background: #edf4ff;
+    color: #1769e0;
+    border-radius: 30px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* Search inputs */
+
+.route-input-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    width: 100%;
+}
+
+.route-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 12px;
+}
+
+.route-field label {
+    color: #53657d;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.route-field input {
+    width: 100%;
+    min-width: 0;
+    height: 58px;
+    padding: 0 16px;
+    border: 1px solid #d9e2ef;
+    border-radius: 11px;
+    background: #fbfdff;
+    color: #172b4d;
+    font-size: 16px;
+}
+
+.route-field input:focus {
+    outline: none;
+    border-color: #1769e0;
+    box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.1);
+}
+
+
+/* Button and messages */
+
+.flight-search-card .primary-button {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 30px auto 0;
+    padding: 17px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #1769e0;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.flight-search-card .primary-button:hover {
+    background: #1054bd;
+}
+
+.search-disclaimer {
+    margin: 25px 0 0;
+    color: #718096;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.search-error {
+    color: #d93030;
+    margin-top: 18px;
+}
+
+
+/* Fare results */
+
+.fare-results {
+    width: 100%;
+    max-width: 1250px;
+    margin: 45px auto;
+    padding: 40px;
+    background: white;
+    border: 1px solid #e3ebf7;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(22, 53, 95, 0.06);
+}
+
+.results-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.results-heading h2 {
+    color: #142b4e;
+    font-size: 30px;
+}
+
+.results-heading p {
+    color: #718096;
+}
+
+.fare-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.fare-information {
+    margin-top: 35px;
+    padding: 28px;
+    background: #f5f8fe;
+    border-radius: 14px;
+    color: #718096;
+    line-height: 1.8;
+}
+
+.fare-information h3 {
+    color: #142b4e;
+}
+
+
+/* Feature cards */
+
+.flight-features {
+    max-width: 1250px;
+    margin: 55px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.flight-features > div {
+    padding: 30px;
+    background: white;
+    border: 1px solid #e3ebf7;
+    border-radius: 16px;
+}
+
+.flight-features span {
+    color: #1769e0;
+    font-weight: 800;
+}
+
+.flight-features h3 {
+    color: #142b4e;
+}
+
+.flight-features p {
+    color: #718096;
+    line-height: 1.7;
+}
+
+
+/* Footer */
+
+.footer {
+    padding: 35px 5%;
+    text-align: center;
+    background: #102746;
+    color: white;
+}
+
+.footer .logo {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.footer .logo span {
+    color: #66a5ff;
+}
+
+
+/* Responsive layout */
+
+@media (max-width: 900px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .route-input-grid,
+    .fare-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .flight-search-page {
+        padding: 0 16px 45px;
+    }
+
+    .flight-search-card,
+    .fare-results {
+        padding: 22px;
+    }
+
+    .search-card-heading,
+    .results-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .route-input-grid,
+    .fare-cards,
+    .flight-features {
+        grid-template-columns: 1fr;
+    }
+
+    .flight-hero {
+        padding: 45px 5px;
+    }
+
+    .flight-hero h1 {
+        font-size: 32px;
+    }
+
+    .navbar nav {
+        gap: 12px;
+    }
+}
+
+
+/* Reverse direction warning */
+
+.route-direction-notice {
+    grid-column: 1 / -1;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 18px;
+    margin-bottom: 20px;
+    background: #fff4e5;
+    border: 1px solid #f0c987;
+    border-left: 5px solid #e69a27;
+    border-radius: 10px;
+    color: #704b13;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =====================================
+   FLYSMART HOMEPAGE DESIGN
+===================================== */
+
+/* Homepage Hero */
+.hero {
+    position: relative;
+    min-height: 480px;
+    padding: 90px 8%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(120deg, #10294f, #1769e0);
+    color: #ffffff;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+}
+
+.hero .eyebrow,
+.hero-content .eyebrow {
+    color: #b9d7ff;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.12;
+    margin: 20px 0;
+    color: #ffffff;
+}
+
+.hero p {
+    max-width: 570px;
+    color: #e1ecff;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.hero .primary-button {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 15px 28px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1769e0;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.hero .primary-button:hover {
+    background: #e8f1ff;
+    transform: translateY(-3px);
+}
+
+/* Hero Decoration */
+.hero-decoration {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plane-icon {
+    font-size: 130px;
+    transform: rotate(-12deg);
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.2));
+}
+
+.circle {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+}
+
+/* Common Homepage Sections */
+.offers-section,
+.search-section {
+    padding: 75px 7%;
+    background: #f5f8fe;
+}
+
+.search-section {
+    text-align: center;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin: 0 auto 42px;
+    text-align: center;
+}
+
+.section-heading .eyebrow {
+    color: #1769e0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    color: #142b4e;
+    font-size: clamp(27px, 3vw, 38px);
+    margin: 14px 0;
+}
+
+.section-heading > p:not(.eyebrow) {
+    color: #718096;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* Feature Cards */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.offer-card {
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 18px;
+    border: 1px solid #e8eef8;
+    box-shadow: 0 8px 25px rgba(20, 43, 78, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(20, 43, 78, 0.12);
+}
+
+.offer-symbol {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 27px;
+    margin-bottom: 22px;
+}
+
+.offer-card h3 {
+    color: #142b4e;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.offer-card p {
+    color: #718096;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100px;
+}
+
+.offer-card a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #1769e0;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.offer-card a:hover {
+    text-decoration: underline;
+}
+
+/* Feature Card Colors */
+.offer-blue .offer-symbol {
+    background: #e5efff;
+    color: #1769e0;
+}
+
+.offer-purple .offer-symbol {
+    background: #f0eaff;
+    color: #7952cf;
+}
+
+.offer-orange .offer-symbol {
+    background: #fff0df;
+    color: #e68a26;
+}
+
+.offer-green .offer-symbol {
+    background: #e2f7ed;
+    color: #249b65;
+}
+
+/* Section Buttons */
+.search-section .primary-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 27px;
+    border-radius: 10px;
+    background: #1769e0;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.search-section .primary-button:hover {
+    background: #1254b5;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+    .offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-decoration {
+        right: 2%;
+        opacity: 0.35;
+    }
+}
+
+@media (max-width: 650px) {
+    .hero {
+        min-height: 420px;
+        padding: 70px 7%;
+    }
+
+    .hero-decoration {
+        display: none;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offers-section,
+    .search-section {
+        padding: 55px 6%;
+    }
+
+    .offer-card p {
+        min-height: auto;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .navbar nav {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+}
+
+/* =====================================
+   FLYSMART HOMEPAGE TYPOGRAPHY
+===================================== */
+
+body:has(.hero) {
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body:has(.hero) h1,
+body:has(.hero) h2,
+body:has(.hero) h3 {
+    font-family: "Segoe UI", Arial, sans-serif;
+    letter-spacing: -0.5px;
+}
+
+body:has(.hero) .hero h1 {
+    font-weight: 800;
+    line-height: 1.12;
+}
+
+body:has(.hero) p {
+    font-family: "Segoe UI", Arial, sans-serif;
+}

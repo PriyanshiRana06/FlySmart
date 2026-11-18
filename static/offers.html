@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Offers | FlySmart</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <style>
+        .offers-page {
+            background: #f5f8fe;
+            min-height: 75vh;
+            padding: 55px 7%;
+        }
+
+        .offers-hero {
+            text-align: center;
+            margin: 0 auto 40px;
+            max-width: 750px;
+        }
+
+        .offers-hero .eyebrow {
+            color: #1769e0;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .offers-hero h1 {
+            color: #142b4e;
+            font-size: 42px;
+            margin: 15px 0;
+        }
+
+        .offers-hero p {
+            color: #718096;
+            line-height: 1.7;
+        }
+
+        .offers-container {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .offer-card {
+            background: white;
+            border: 1px solid #e3ebf7;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(22, 53, 95, 0.06);
+        }
+
+        .offer-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .offer-tag {
+            display: inline-block;
+            background: #eaf2ff;
+            color: #1769e0;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .offer-card h2 {
+            color: #142b4e;
+            margin: 17px 0 10px;
+            font-size: 22px;
+        }
+
+        .offer-card p {
+            color: #718096;
+            line-height: 1.7;
+        }
+
+        .offer-card ul {
+            color: #53657d;
+            line-height: 2;
+            padding-left: 20px;
+        }
+
+        .offer-note {
+            max-width: 1100px;
+            margin: 35px auto 0;
+            padding: 20px;
+            background: #eaf2ff;
+            border-radius: 12px;
+            color: #53657d;
+            line-height: 1.7;
+        }
+
+        /* Smart Offer Form */
+
+        .smart-offer-form {
+            max-width: 1100px;
+            margin: 0 auto 45px;
+            padding: 35px;
+            background: white;
+            border: 1px solid #e3ebf7;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(22, 53, 95, 0.06);
+        }
+
+        .form-heading {
+            margin-bottom: 25px;
+        }
+
+        .form-heading h2 {
+            color: #142b4e;
+            margin: 15px 0 8px;
+        }
+
+        .form-heading p {
+            color: #718096;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #142b4e;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px;
+            border: 1px solid #d8e2f0;
+            border-radius: 8px;
+            font-size: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .eligibility-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+            color: #53657d;
+        }
+
+        #findOffersBtn {
+            background: #1769e0;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 14px 25px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #findOffersBtn:hover {
+            background: #1055bd;
+        }
+
+        #findOffersBtn:disabled {
+            opacity: 0.65;
+            cursor: wait;
+        }
+
+        /* Smart Offer Results */
+
+        #offerResults {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        #offerResults h2,
+        #offerResults > p {
+            grid-column: 1 / -1;
+        }
+
+        #offerResults h2 {
+            color: #142b4e;
+            margin: 0 0 5px;
+            font-size: 24px;
+        }
+
+        #offerResults > p {
+            color: #53657d;
+            line-height: 1.6;
+            margin: 0 0 5px;
+        }
+
+        .smart-result-card {
+            display: block;
+            width: 100%;
+            min-height: 0;
+            height: auto;
+            box-sizing: border-box;
+            padding: 20px 22px;
+            margin: 0;
+            background: #ffffff;
+            border: 1px solid #e3ebf7;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(22, 53, 95, 0.05);
+        }
+
+        .smart-result-card h3 {
+            margin: 0 0 12px;
+            color: #142b4e;
+            font-size: 19px;
+        }
+
+        .smart-result-card p {
+            margin: 8px 0;
+            color: #53657d;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .smart-result-card p:nth-of-type(2) {
+            color: #16834a;
+            font-weight: 700;
+        }
+
+        .smart-result-card p:nth-of-type(3) {
+            color: #142b4e;
+            font-weight: 700;
+        }
+
+        .smart-result-card small {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 10px;
+            background: #fff4df;
+            color: #8a5a00;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        #offerResults > p:last-child {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #718096;
+        }
+
+        @media (max-width: 700px) {
+            .offers-page {
+                padding: 40px 18px;
+            }
+
+            .offers-hero h1 {
+                font-size: 32px;
+            }
+
+            .offers-container {
+                grid-template-columns: 1fr;
+            }
+
+            .smart-offer-form {
+                padding: 22px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #offerResults {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo">Fly<span>Smart</span></a>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/static/explore.html">Explore Flights</a>
+        <a href="/static/offers.html" class="active">Flight Offers</a>
+        <a href="/static/about.html">About FlySmart</a>
+    </nav>
+
+    <a href="/static/explore.html" class="nav-button">Explore Flights</a>
+</header>
+
+<main class="offers-page">
+
+    <section class="offers-hero">
+        <p class="eyebrow">FLY MORE, SAVE SMARTER</p>
+        <h1>Flight Offers & Deals</h1>
+        <p>
+            Explore different ways to save on your next flight.
+            Find offers related to student travel, bank cards,
+            advance bookings and airline promotions.
+        </p>
+    </section>
+
+    <!-- Smart Offer Recommendation Form -->
+
+    <section class="smart-offer-form">
+
+        <div class="form-heading">
+            <span class="offer-tag">AI-POWERED RECOMMENDATIONS</span>
+            <h2>Find the Best Savings for Your Journey</h2>
+            <p>Enter your travel details to discover offers matching your eligibility.</p>
+        </div>
+
+        <form id="smartOfferForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="origin">From</label>
+                    <input type="text" id="origin" placeholder="e.g. Delhi" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">To</label>
+                    <input type="text" id="destination" placeholder="e.g. Mumbai" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketPrice">Ticket Price (₹)</label>
+                    <input type="number" id="ticketPrice" min="1" max="1000000" placeholder="5000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bank">Bank</label>
+                    <select id="bank">
+                        <option value="None">No bank selected</option>
+                        <option value="HDFC">HDFC</option>
+                        <option value="ICICI">ICICI</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cardType">Card Type</label>
+                    <select id="cardType">
+                        <option value="None">No card</option>
+                        <option value="Credit">Credit Card</option>
+                        <option value="Debit">Debit Card</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="eligibility-options">
+
+                <label>
+                    <input type="checkbox" id="isStudent">
+                    I am a student
+                </label>
+
+                <label>
+                    <input type="checkbox" id="loyaltyMember">
+                    I am a loyalty member
+                </label>
+
+            </div>
+
+            <button type="submit" id="findOffersBtn">
+                Find My Best Offers
+            </button>
+
+        </form>
+
+        <div id="offerResults" aria-live="polite"></div>
+
+    </section>
+
+    <!-- Static Offer Categories -->
+
+    <section class="offers-container">
+
+        <article class="offer-card">
+            <div class="offer-icon">🎓</div>
+            <span class="offer-tag">STUDENT BENEFIT</span>
+            <h2>Student Flight Offers</h2>
+            <p>
+                Students may be eligible for special fares and
+                additional baggage benefits on selected airlines.
+            </p>
+            <ul>
+                <li>Valid student identification may be required</li>
+                <li>Eligibility depends on the airline</li>
+                <li>Check applicable baggage allowances</li>
+            </ul>
+        </article>
+
+        <article class="offer-card">
+            <div class="offer-icon">💳</div>
+            <span class="offer-tag">BANK BENEFIT</span>
+            <h2>Bank & Card Discounts</h2>
+            <p>
+                Selected bank cards and payment methods may offer
+                discounts or cashback on eligible flight bookings.
+            </p>
+            <ul>
+                <li>Check eligible debit and credit cards</li>
+                <li>Minimum booking amount may apply</li>
+                <li>Terms depend on the payment provider</li>
+            </ul>
+        </article>
+
+        <article class="offer-card">
+            <div class="offer-icon">📅</div>
+            <span class="offer-tag">EARLY BOOKING</span>
+            <h2>Plan Ahead & Save</h2>
+            <p>
+                Compare fares in advance and explore different
+                travel dates to find a suitable booking option.
+            </p>
+            <ul>
+                <li>Compare nearby departure dates</li>
+                <li>Check different airlines and timings</li>
+                <li>Review historical fare insights on FlySmart</li>
+            </ul>
+        </article>
+
+        <article class="offer-card">
+            <div class="offer-icon">✈️</div>
+            <span class="offer-tag">AIRLINE DEALS</span>
+            <h2>Airline Promotional Offers</h2>
+            <p>
+                Airlines periodically introduce promotional fares
+                on selected domestic routes.
+            </p>
+            <ul>
+                <li>Offers may be route-specific</li>
+                <li>Travel dates and seat availability may vary</li>
+                <li>Check the airline's official booking website</li>
+            </ul>
+        </article>
+
+    </section>
+
+    <div class="offer-note">
+        <strong>Important:</strong> These are illustrative offer categories
+        for the FlySmart academic project, not verified live promotions.
+        Actual discounts, eligibility and booking conditions must be
+        confirmed with the respective airline or payment provider.
+    </div>
+
+</main>
+
+<footer class="footer">
+    <a href="/" class="logo">Fly<span>Smart</span></a>
+    <p>Smart Flight Search. Smarter Price Insights.</p>
+    <p class="copyright">© 2026 FlySmart. Academic Project.</p>
+</footer>
+
+<script>
+document.getElementById("smartOfferForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const button = document.getElementById("findOffersBtn");
+    const results = document.getElementById("offerResults");
+
+    const requestData = {
+        origin: document.getElementById("origin").value.trim(),
+        destination: document.getElementById("destination").value.trim(),
+        ticket_price: Number(document.getElementById("ticketPrice").value),
+        is_student: document.getElementById("isStudent").checked,
+        bank: document.getElementById("bank").value,
+        card_type: document.getElementById("cardType").value,
+        loyalty_member: document.getElementById("loyaltyMember").checked
+    };
+
+    button.disabled = true;
+    button.textContent = "Finding Offers...";
+    results.textContent = "Checking your eligibility and calculating savings...";
+
+    try {
+
+        const response = await fetch("/offers/recommend", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(requestData)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.detail || "Unable to find offers.");
+        }
+
+        results.replaceChildren();
+
+        const heading = document.createElement("h2");
+        heading.textContent = "Your Recommended Offers";
+        results.appendChild(heading);
+
+        const summary = document.createElement("p");
+        summary.textContent =
+            "Route: " + data.route +
+            " | Original ticket price: ₹" +
+            data.original_price.toLocaleString("en-IN");
+
+        results.appendChild(summary);
+
+        if (data.recommendations.length === 0) {
+
+            const message = document.createElement("p");
+            message.textContent =
+                "No eligible offers found. Try changing your booking details.";
+
+            results.appendChild(message);
+
+        } else {
+
+            data.recommendations.forEach(offer => {
+
+                const card = document.createElement("article");
+                card.className = "smart-result-card";
+
+                const title = document.createElement("h3");
+                title.textContent = offer.name;
+
+                const category = document.createElement("p");
+                category.textContent = "Category: " + offer.category;
+
+                const savings = document.createElement("p");
+                savings.textContent =
+                    "You save: ₹" + offer.savings.toLocaleString("en-IN");
+
+                const finalPrice = document.createElement("p");
+                finalPrice.textContent =
+                    "Final price: ₹" + offer.final_price.toLocaleString("en-IN");
+
+                const reason = document.createElement("p");
+                reason.textContent =
+                    "Why recommended: " + offer.reasons.join(", ");
+
+                const status = document.createElement("small");
+                status.textContent = offer.offer_status;
+
+                card.append(title, category, savings, finalPrice, reason, status);
+                results.appendChild(card);
+
+            });
+
+        }
+
+        const notice = document.createElement("p");
+        notice.textContent = data.notice;
+        results.appendChild(notice);
+
+    } catch (error) {
+
+        results.replaceChildren();
+
+        const errorMessage = document.createElement("p");
+        errorMessage.textContent = "Error: " + error.message;
+        results.appendChild(errorMessage);
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Find My Best Offers";
+
+    }
+
+});
+</script>
+
+</body>
+</html>

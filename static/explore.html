@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Flights | FlySmart</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo">Fly<span>Smart</span></a>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/static/explore.html" class="active">Explore Flights</a>
+        <a href="/static/offers.html">Flight Offers</a>
+        <a href="/static/about.html">About FlySmart</a>
+    </nav>
+
+    <a href="/" class="nav-button">Home</a>
+</header>
+
+<main class="flight-search-page">
+
+    <!-- HERO SECTION -->
+    <section class="flight-hero">
+        <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
+        <h1>Where would you like to fly?</h1>
+        <p>Explore routes and discover smarter fare insights with FlySmart.</p>
+    </section>
+
+
+    <!-- HISTORICAL FLIGHT SEARCH -->
+    <section class="flight-search-card">
+
+        <div class="search-card-heading">
+            <div>
+                <span class="search-tag">✈ FLIGHT SEARCH</span>
+                <h2>Search your journey</h2>
+            </div>
+            <span class="route-count">100+ cities to explore</span>
+        </div>
+
+        <form id="routeSearchForm">
+
+            <div class="route-input-grid">
+
+                <div class="route-field">
+                    <label for="originCity">FROM</label>
+                    <input
+                        type="text"
+                        id="originCity"
+                        list="citySuggestions"
+                        placeholder="Enter departure city"
+                        autocomplete="off"
+                        required>
+                </div>
+
+                <div class="route-field">
+                    <label for="destinationCity">TO</label>
+                    <input
+                        type="text"
+                        id="destinationCity"
+                        list="citySuggestions"
+                        placeholder="Enter destination city"
+                        autocomplete="off"
+                        required>
+                </div>
+
+                <datalist id="citySuggestions"></datalist>
+
+                <div class="route-field">
+                    <label for="departureDate">DEPARTURE DATE</label>
+                    <input
+                        type="date"
+                        id="departureDate"
+                        required>
+                </div>
+
+            </div>
+
+            <p id="searchError" class="search-error" role="alert"></p>
+
+            <button type="submit" id="searchFlightsButton" class="primary-button">
+                Search Flights →
+            </button>
+
+        </form>
+
+        <p class="search-disclaimer">
+            Fare information is based on historical route-level observations.
+            It does not represent live flight availability or a confirmed ticket price.
+        </p>
+
+    </section>
+
+
+    <!-- HISTORICAL FARE RESULTS -->
+    <section id="fareResults" class="fare-results" hidden>
+
+        <div class="results-heading">
+            <div>
+                <p class="eyebrow">YOUR ROUTE INSIGHTS</p>
+                <h2 id="searchedRoute">Flight Fare Insights</h2>
+                <p id="searchedDate"></p>
+            </div>
+
+            <span class="historical-badge">Historical Fare Data</span>
+        </div>
+
+        <div id="fareCards" class="fare-cards"></div>
+
+        <div class="fare-information">
+            <h3>Understanding these fares</h3>
+            <p>
+                Median fare represents the middle observed fare in the dataset.
+                Recent low represents the reported low fare over the recent
+                30-day period. The 25th and 75th percentiles show the middle
+                range of historical observations.
+            </p>
+            <p id="fareSource"></p>
+        </div>
+
+    </section>
+
+
+    <!-- ROUTE-BASED FARE CLASSIFICATION -->
+    <section class="flight-search-card route-classification-section">
+
+        <div class="search-card-heading">
+            <div>
+                <span class="search-tag">✦ HISTORICAL FARE CLASSIFICATION</span>
+                <h2>Check Your Route Fare Category</h2>
+                <p>
+                    Discover whether your selected route falls into
+                    the Low, Medium or High historical fare category.
+                </p>
+            </div>
+        </div>
+
+        <p class="search-disclaimer">
+            This feature uses historical median fares from our
+            domestic route dataset. Select your origin and destination
+            in the flight search section above.
+        </p>
+
+        <button
+            type="button"
+            id="classifyRouteButton"
+            class="primary-button">
+            Classify Historical Fare →
+        </button>
+
+        <p
+            id="classificationError"
+            class="search-error"
+            role="alert">
+        </p>
+
+        <!-- CLASSIFICATION RESULTS -->
+        <div id="routeClassificationResults" hidden>
+
+            <div class="results-heading">
+                <div>
+                    <p class="eyebrow">YOUR HISTORICAL FARE INSIGHT</p>
+                    <h2 id="classificationRoute">Route Fare Classification</h2>
+                    <p id="classificationDirection"></p>
+                </div>
+
+                <span class="historical-badge">
+                    Historical Data
+                </span>
+            </div>
+
+            <div class="fare-cards">
+
+                <!-- MEDIAN FARE -->
+                <div class="fare-card">
+                    <h3>Historical Median Fare</h3>
+                    <p id="classificationMedian">--</p>
+                    <span>Middle observed fare</span>
+                </div>
+
+                <!-- FARE CATEGORY -->
+                <div class="fare-card">
+                    <h3>Fare Category</h3>
+                    <p id="classificationCategory">--</p>
+                    <span>Based on historical median fare</span>
+                </div>
+
+                <!-- OBSERVATIONS -->
+                <div class="fare-card">
+                    <h3>Observations</h3>
+                    <p id="classificationObservations">--</p>
+                    <span>Historical route observations</span>
+                </div>
+
+            </div>
+
+            <div class="fare-information">
+
+                <h3>Historical Fare Range</h3>
+
+                <div class="route-input-grid">
+
+                    <div>
+                        <span>25th Percentile</span>
+                        <h3 id="classificationP25">--</h3>
+                    </div>
+
+                    <div>
+                        <span>75th Percentile</span>
+                        <h3 id="classificationP75">--</h3>
+                    </div>
+
+                </div>
+
+                <p id="classificationUpdated"></p>
+
+                <p id="classificationNotice"></p>
+
+                <p>
+                    Classification is based on dataset quartiles:
+                    Low below ₹6,260, Medium from ₹6,260 to ₹11,476,
+                    and High above ₹11,476.
+                </p>
+
+                <p>
+                    These values represent historical route information.
+                    They are not live ticket prices or guaranteed booking costs.
+                </p>
+
+                <p id="classificationSource"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MACHINE LEARNING PRICE PREDICTION -->
+    <section class="flight-search-card ml-prediction-section">
+
+        <div class="search-card-heading">
+            <div>
+                <span class="search-tag">✦ MACHINE LEARNING</span>
+                <h2>Predict Your Flight Price</h2>
+                <p>
+                    Get an estimated flight price category using our trained
+                    machine-learning model.
+                </p>
+            </div>
+        </div>
+
+        <p class="search-disclaimer">
+            Enter your route and departure date in the flight search section above.
+            Then provide the remaining flight details below.
+            ML predictions currently support Bangalore, Chennai, Delhi,
+            Hyderabad, Kolkata and Mumbai.
+        </p>
+
+        <form id="predictionForm">
+
+            <div class="route-input-grid">
+
+                <!-- AIRLINE -->
+                <div class="route-field">
+                    <label for="airline">AIRLINE</label>
+                    <select id="airline" required>
+                        <option value="">Select airline</option>
+                        <option value="AirAsia">AirAsia</option>
+                        <option value="Air_India">Air India</option>
+                        <option value="GO_FIRST">Go First</option>
+                        <option value="Indigo">IndiGo</option>
+                        <option value="SpiceJet">SpiceJet</option>
+                        <option value="Vistara">Vistara</option>
+                    </select>
+                </div>
+
+                <!-- DEPARTURE TIME -->
+                <div class="route-field">
+                    <label for="departureTime">DEPARTURE TIME</label>
+                    <select id="departureTime" required>
+                        <option value="">Select departure time</option>
+                        <option value="Early_Morning">Early Morning</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                        <option value="Night">Night</option>
+                        <option value="Late_Night">Late Night</option>
+                    </select>
+                </div>
+
+                <!-- ARRIVAL TIME -->
+                <div class="route-field">
+                    <label for="arrivalTime">ARRIVAL TIME</label>
+                    <select id="arrivalTime" required>
+                        <option value="">Select arrival time</option>
+                        <option value="Early_Morning">Early Morning</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                        <option value="Evening">Evening</option>
+                        <option value="Night">Night</option>
+                        <option value="Late_Night">Late Night</option>
+                    </select>
+                </div>
+
+                <!-- NUMBER OF STOPS -->
+                <div class="route-field">
+                    <label for="stops">NUMBER OF STOPS</label>
+                    <select id="stops" required>
+                        <option value="">Select stops</option>
+                        <option value="zero">Non-stop</option>
+                        <option value="one">One stop</option>
+                        <option value="two_or_more">Two or more stops</option>
+                    </select>
+                </div>
+
+                <!-- TRAVEL CLASS -->
+                <div class="route-field">
+                    <label for="flightClass">TRAVEL CLASS</label>
+                    <select id="flightClass" required>
+                        <option value="">Select class</option>
+                        <option value="Economy">Economy</option>
+                        <option value="Business">Business</option>
+                    </select>
+                </div>
+
+                <!-- FLIGHT DURATION -->
+                <div class="route-field">
+                    <label for="flightDuration">FLIGHT DURATION (HOURS)</label>
+                    <input
+                        type="number"
+                        id="flightDuration"
+                        min="0.1"
+                        max="100"
+                        step="0.1"
+                        placeholder="Example: 2.5"
+                        required>
+                </div>
+
+            </div>
+
+            <p id="predictionError" class="search-error" role="alert"></p>
+
+            <button
+                type="submit"
+                id="predictFlightButton"
+                class="primary-button">
+                Predict Flight Price →
+            </button>
+
+        </form>
+
+
+        <!-- ML PREDICTION OUTPUT -->
+        <div id="predictionResults" hidden>
+
+            <div class="results-heading">
+                <div>
+                    <p class="eyebrow">YOUR PREDICTION</p>
+                    <h2>ML Prediction Result</h2>
+                </div>
+
+                <span class="historical-badge">AI Powered Insights</span>
+            </div>
+
+            <div id="predictionCategory"></div>
+
+            <div id="predictionRecommendations"></div>
+
+            <p class="search-disclaimer">
+                This is a predicted price category, not an exact ticket price
+                or a guarantee of actual booking cost.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+    <section class="flight-features">
+
+        <div>
+            <span>01</span>
+            <h3>Explore Routes</h3>
+            <p>Discover supported domestic routes across India.</p>
+        </div>
+
+        <div>
+            <span>02</span>
+            <h3>Compare Fare Insights</h3>
+            <p>Understand historical fare patterns before booking.</p>
+        </div>
+
+        <div>
+            <span>03</span>
+            <h3>Smart ML Predictions</h3>
+            <p>
+                Explore machine-learning price categories for supported
+                flight details.
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <a href="/" class="logo">Fly<span>Smart</span></a>
+    <p>Smart Flight Search. Smarter Price Insights.</p>
+    <p class="copyright">© 2026 FlySmart. Academic Project.</p>
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script src="/static/js/script.js"></script>
+
+</body>
+</html>

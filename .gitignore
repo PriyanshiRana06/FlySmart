@@ -1,0 +1,14 @@
+.venv/
+.venv-linux/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+mlflow.db
+mlruns/
+.env
+.vscode/
+
+# Unnecessary saved browser webpage
+Explore Flights _ FlySmart.html
+Explore Flights _ FlySmart_files/
