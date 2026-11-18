@@ -1,6 +1,19 @@
 
 # FlySmart — AI-Powered Flight Intelligence & Savings Platform
 
+## Live Deployment
+
+FlySmart is publicly deployed using Render and Docker.
+
+**Live Website:** https://flysmart-5kqe.onrender.com
+
+**API Documentation:** https://flysmart-5kqe.onrender.com/docs
+
+**Health Check:** https://flysmart-5kqe.onrender.com/health
+
+Deployment Platform: Render
+Containerization: Docker
+
 FlySmart is an academic flight intelligence platform that combines machine learning-based flight price classification, historical domestic fare insights, and smart savings recommendations.
 
 The platform helps users understand flight price categories, explore historical route fares, and discover applicable illustrative offers through a simple web interface.
